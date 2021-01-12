@@ -1,0 +1,3 @@
+rootProject.name='HouseSketchPad'
+include ':app'
+include ':sketchpad'
