@@ -10,10 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:name=".MyApplication"
-        android:theme="@style/AppTheme"
+        android:theme="@style/MainAppTheme"
         tools:ignore="LockedOrientationActivity">
+        <meta-data
+            android:name="com.stanny.housesketchpad.api.ApiConfigModule"
+            android:value="ConfigModule" />
+
         <activity
-            android:name=".MainActivity"
+            android:name="com.gt.entrypad.module.project.ui.activity.ProjectListActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

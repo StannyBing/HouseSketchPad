@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/entrypad" />
             <option value="$PROJECT_DIR$/sketchpad" />
+            <option value="$PROJECT_DIR$/zxmvp" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
