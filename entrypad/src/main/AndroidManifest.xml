@@ -5,7 +5,8 @@ package="com.gt.entrypad">
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
 
-    <application>
+    <application         android:requestLegacyExternalStorage="true"
+        >
 
     <activity android:name=".module.project.ui.activity.ProjectListActivity"
         android:screenOrientation="landscape"
@@ -16,5 +17,12 @@ package="com.gt.entrypad">
     <activity android:name=".module.project.ui.activity.CameraActivity"
         android:screenOrientation="landscape"
         android:theme="@style/MainAppTheme"/>
-</application>
+        <activity android:name="com.zx.zxutils.views.PhotoPicker.PhotoPickerActivity"
+            android:theme="@style/MainAppTheme"
+            android:screenOrientation="landscape"/>
+        <activity android:name="com.zx.zxutils.views.PhotoPicker.PhotoPagerActivity"
+            android:theme="@style/MainAppTheme"
+            android:screenOrientation="landscape"/>
+
+    </application>
 </manifest>
