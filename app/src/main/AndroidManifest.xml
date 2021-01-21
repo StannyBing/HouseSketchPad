@@ -23,7 +23,7 @@
                 android:resource="@xml/file_paths"/>
         </provider>
         <meta-data
-            android:name="com.stanny.housesketchpad.api.ApiConfigModule"
+            android:name="com.gt.entrypad.api.ApiConfigModule"
             android:value="ConfigModule" />
 
         <activity

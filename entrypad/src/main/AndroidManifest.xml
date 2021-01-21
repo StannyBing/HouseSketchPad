@@ -5,9 +5,10 @@ package="com.gt.entrypad">
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
 
-    <application         android:requestLegacyExternalStorage="true"
-        >
-
+    <application  android:requestLegacyExternalStorage="true">
+        <meta-data
+            android:name="com.gt.entrypad.api.ApiConfigModule"
+            android:value="ConfigModule" />
     <activity android:name=".module.project.ui.activity.ProjectListActivity"
         android:screenOrientation="landscape"
         android:theme="@style/MainAppTheme"/>

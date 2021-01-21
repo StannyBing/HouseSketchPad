@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="8dp">
         <ImageView
             android:id="@+id/photoViewIv"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -26,6 +26,7 @@
             android:id="@+id/photoViewDeleteIv"
             android:layout_width="16dp"
             android:layout_height="16dp"
+            android:onClick="@{viewModel.onClick}"
             app:layout_constraintLeft_toLeftOf="@id/photoViewIv"
             app:layout_constraintBottom_toBottomOf="@id/photoViewIv"
             android:layout_marginStart="88dp"

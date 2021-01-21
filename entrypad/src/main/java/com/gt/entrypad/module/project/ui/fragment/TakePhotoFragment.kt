@@ -29,6 +29,7 @@ import com.zx.zxutils.views.PhotoPicker.widget.ZXPhotoPickerView
 import kotlinx.android.synthetic.main.fragment_take_photo.*
 import rx.functions.Action1
 import java.util.*
+import kotlin.collections.ArrayList
 
 @Route(path =RouterPath.TAKE_PHOTO)
 class TakePhotoFragment :BaseFragment<TakePhotoPresenter,TakePhotoModel>(),TakePhotoContract.View{
@@ -51,7 +52,7 @@ class TakePhotoFragment :BaseFragment<TakePhotoPresenter,TakePhotoModel>(),TakeP
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
         recyclerView.apply {
-            layoutManager = StaggeredGridLayoutManager(7, OrientationHelper.VERTICAL)
+            layoutManager = StaggeredGridLayoutManager(5, OrientationHelper.VERTICAL)
             adapter = photoAdapter
         }
         photoList.add(PhotoViewViewModel().apply {
@@ -99,6 +100,10 @@ class TakePhotoFragment :BaseFragment<TakePhotoPresenter,TakePhotoModel>(),TakeP
                 show()
             }
         })
+        mRxManager.on("delete", Action1 <PhotoViewViewModel>{
+            photoList.remove(it)
+            photoAdapter.notifyDataSetChanged()
+        })
     }
 
     override fun getLayoutId(): Int {
@@ -108,7 +113,16 @@ class TakePhotoFragment :BaseFragment<TakePhotoPresenter,TakePhotoModel>(),TakeP
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode== PhotoPicker.REQUEST_CODE&&resultCode== Activity.RESULT_OK){
-            photoList.add(0,PhotoViewViewModel(data?.getStringExtra("path")?:""))
+            val s = data?.getStringExtra("path") ?: ""
+            if (s.isEmpty()){
+                //相册选取
+               (data?.extras?.get("SELECTED_PHOTOS") as ArrayList<String>)?.forEach {
+                    photoList.add(0,PhotoViewViewModel(it))
+                }
+            }else{
+                //拍照
+                photoList.add(0,PhotoViewViewModel(s))
+            }
             photoAdapter.notifyDataSetChanged()
         }
     }

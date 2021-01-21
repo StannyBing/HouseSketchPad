@@ -1,14 +1,22 @@
 package com.gt.entrypad.module.project.ui.view.photoView
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.net.Uri
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
+import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 import com.gt.entrypad.R
 import com.gt.entrypad.base.view.BaseCustomView
 import com.gt.entrypad.databinding.LayoutPhotoViewBinding
+import kotlinx.android.synthetic.main.activity_project_list.*
 import java.io.File
 
 class PhotoView  @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr:Int = 0): BaseCustomView<LayoutPhotoViewBinding, PhotoViewViewModel>(context, attrs, defStyleAttr){
@@ -22,18 +30,18 @@ class PhotoView  @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
     override fun setDataToView(data: PhotoViewViewModel) {
         getDataBinding().viewModel = data
-        val uri = Uri.fromFile(File("/storage/emulated/0/houseSketch/HouseFile/20210120_233444.jpg"))
         Glide.with(context)
-            .load(if (data.url.isEmpty()&&data.resId!=0)data.resId else if(data.url.startsWith("http")) data.url else uri)
+            .load(if (data.url.isEmpty()&&data.resId!=0){
+                data.resId
+            } else data.url)
             .apply(
                 RequestOptions()
                     .centerCrop()
                     .placeholder(com.zx.zxutils.R.drawable.__picker_default_weixin)
-                    .error(com.zx.zxutils.R.mipmap.__picker_ic_broken_image_black_48dp)
+                    .error(R.drawable.icon_img_error)
             )
-            .thumbnail(0.1f)
             .into(getDataBinding().photoViewIv)
-
+        getDataBinding().photoViewDeleteIv.visibility = if (data.resId!=0) View.GONE else View.VISIBLE
     }
 
     override fun setStyle(resId: Int) {

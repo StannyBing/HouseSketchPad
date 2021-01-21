@@ -19,11 +19,14 @@ import com.gt.entrypad.module.project.ui.view.titleView.TitleViewViewModel
 import kotlinx.android.synthetic.main.fragment_scan_id_card.*
 import android.view.ViewGroup
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.gt.entrypad.api.ApiParamUtil
 import com.gt.entrypad.app.RouterPath
 import com.gt.entrypad.module.project.ui.view.BottomSheetOptionsDialog
+import rx.functions.Action1
 
 @Route(path = RouterPath.SCANID_CARD)
 class ScanIdCardFragment :BaseFragment<ScanIdCardPresenter,ScanIdCardModel>(),ScanIdCardContract.View{
+    private var bottomSheetOptionsDialog:BottomSheetOptionsDialog?=null
     companion object {
         /**
          * 启动器
@@ -38,8 +41,22 @@ class ScanIdCardFragment :BaseFragment<ScanIdCardPresenter,ScanIdCardModel>(),Sc
     }
     override fun onViewListener() {
         floatActionButton.setOnClickListener {
-            BottomSheetOptionsDialog(mContext,initBottomData()).show()
+            BottomSheetOptionsDialog(mContext,initBottomData()).apply {
+                bottomSheetOptionsDialog = this
+                show()
+            }
         }
+        mRxManager.on("bottom", Action1<String> {
+            bottomSheetOptionsDialog?.dismiss()
+            when(it){
+               getString(R.string.scanIdCard)->{
+                    mPresenter.scanIdCard(ApiParamUtil.scanIdCardParam("","",false))
+               }
+                getString(R.string.inputMsg)->{
+
+                }
+            }
+        })
     }
 
     override fun getLayoutId(): Int {
@@ -53,4 +70,7 @@ class ScanIdCardFragment :BaseFragment<ScanIdCardPresenter,ScanIdCardModel>(),Sc
         }
     }
 
+    override fun scanIdCardResult(result: String?) {
+
+    }
 }

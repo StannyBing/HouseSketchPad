@@ -1,4 +1,4 @@
-package com.stanny.housesketchpad.api
+package com.gt.entrypad.api
 
 import android.app.Application
 import android.content.Context
@@ -8,7 +8,6 @@ import com.frame.zxmvp.http.AppDelegate
 import com.frame.zxmvp.http.GlobalHttpHandler
 import com.frame.zxmvp.integration.ConfigModule
 import com.frame.zxmvp.integration.IRepositoryManager
-import com.gt.entrypad.api.ApiService
 import com.zx.zxutils.util.ZXLogUtil
 import com.zx.zxutils.util.ZXSharedPrefUtil
 import okhttp3.Interceptor

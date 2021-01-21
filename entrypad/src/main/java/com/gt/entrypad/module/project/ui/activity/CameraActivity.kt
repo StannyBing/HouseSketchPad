@@ -1,6 +1,7 @@
 package com.gt.entrypad.module.project.ui.activity
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -11,12 +12,14 @@ import com.frame.zxmvp.base.BasePresenter
 import com.frame.zxmvp.base.IView
 import com.gt.entrypad.R
 import com.gt.entrypad.base.BaseActivity
+import com.gt.entrypad.tool.MyUtil
 import com.lt.component_library.app.ConstStrings
 import com.zx.zxutils.util.ZXTimeUtil
 import com.zx.zxutils.views.CameraView.ZXCameraView
 import com.zx.zxutils.views.CameraView.listener.CameraListener
 import com.zx.zxutils.views.PhotoPicker.PhotoPicker
 import kotlinx.android.synthetic.main.activity_acmera.*
+import java.io.File
 import java.text.SimpleDateFormat
 
 
@@ -52,9 +55,10 @@ class CameraActivity :BaseActivity<BasePresenter<*,*>,BaseModel>(),IView{
             showAlbumView(true)
             setCameraLisenter(object : CameraListener {
                 override fun onCaptureCommit(bitmap: Bitmap) {
-                    val time = ZXTimeUtil.getTime(System.currentTimeMillis(), SimpleDateFormat("yyyyMMdd_HHmmss"))
+                    val time =ZXTimeUtil.getTime(System.currentTimeMillis(), SimpleDateFormat("yyyyMMdd_HHmmss"))
                     val name = time
-                    val path = ConstStrings.getLocalPath() + "HouseFile/" + time + ".jpg"
+                    val path = ConstStrings.getLocalPath() + "HouseFile/" + System.currentTimeMillis() + ".jpg"
+                    MyUtil.bitmapToFile(bitmap, File(path))
                     val intent = Intent()
                     intent.putExtra("type", 1)
                     intent.putExtra("path", path)
