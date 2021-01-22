@@ -7,7 +7,7 @@ import com.gt.entrypad.module.project.mvp.contract.*
  * Create By admin On 2017/7/11
  * 功能：
  */
-class SoilGroundModel : BaseModel(), SoilGroundContract.Model{
+class GroundFigureModel : BaseModel(), GroundFigureContract.Model{
     
 	
 }

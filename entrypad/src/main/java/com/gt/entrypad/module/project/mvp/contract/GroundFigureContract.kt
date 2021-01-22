@@ -8,7 +8,7 @@ import com.frame.zxmvp.base.IModel
  * Create By admin On 2017/7/11
  * 功能：
  */
-interface SoilGroundContract {
+interface GroundFigureContract {
     //对于经常使用的关于UI的方法可以定义到IView中,如显示隐藏进度条,和显示文字消息
     interface View : IView {
 
