@@ -15,10 +15,5 @@ import rx.Observable
  * 功能：
  */
 class ScanIdCardModel : BaseModel(), ScanIdCardContract.Model {
-    override fun scanIdCard(body: RequestBody): Observable<String> {
-        return mRepositoryManager.obtainRetrofitService(ApiService::class.java)
-            .scanIdCard(body)
-            .compose(RxHelper.handleResult())
-            .compose(RxSchedulers.io_main())
-    }
+
 }

@@ -2,12 +2,17 @@ package com.gt.entrypad.module.project.ui.activity
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
+import com.baidu.ocr.sdk.OCR
+import com.baidu.ocr.sdk.OnResultListener
+import com.baidu.ocr.sdk.exception.OCRError
+import com.baidu.ocr.sdk.model.AccessToken
 import com.gt.entrypad.R
 import com.gt.entrypad.base.BaseActivity
 import com.gt.entrypad.base.view.ICustomViewActionListener
@@ -98,7 +103,7 @@ class ProjectHomePageActivity :BaseActivity<ProjectHomePagePresenter,ProjectHome
     private fun initViewPager(){
         tabViewPager.apply {
             setScanScroll(false)
-            offscreenPageLimit =  fragmentList.size
+            offscreenPageLimit=fragmentList.size
             setOnPageChangeListener(object :ViewPager.OnPageChangeListener{
                 override fun onPageScrollStateChanged(state: Int) {
 
@@ -142,4 +147,5 @@ class ProjectHomePageActivity :BaseActivity<ProjectHomePagePresenter,ProjectHome
         super.onActivityResult(requestCode, resultCode, data)
         takePhotoFragment?.onActivityResult(requestCode,resultCode,data)
     }
+
 }

@@ -17,8 +17,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:onClick="@{viewModel.onClick}"/>
 
 
@@ -27,10 +27,8 @@
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:onClick="@{viewModel.onClick}"
-            app:layout_constraintLeft_toLeftOf="@id/photoViewIv"
-            app:layout_constraintBottom_toBottomOf="@id/photoViewIv"
-            android:layout_marginStart="88dp"
-            android:layout_marginBottom="88dp"
+            app:layout_constraintRight_toRightOf="@id/photoViewIv"
+            app:layout_constraintTop_toTopOf="@id/photoViewIv"
             android:background="@drawable/et_close"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

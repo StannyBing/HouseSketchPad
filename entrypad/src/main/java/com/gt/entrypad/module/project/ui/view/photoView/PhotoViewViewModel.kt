@@ -9,7 +9,7 @@ import com.gt.entrypad.module.project.ui.view.titleView.TitleViewViewModel
 import com.zx.zxutils.util.ZXToastUtil
 import com.zx.zxutils.views.PhotoPicker.ZXPhotoPreview
 
-class PhotoViewViewModel(var url:String="") :BaseCustomViewModel(){
+class PhotoViewViewModel(var url:String="",var width:Int = 288,var height:Int=288) :BaseCustomViewModel(){
     fun onClick(view: View){
         when(view.id){
             R.id.photoViewIv->{

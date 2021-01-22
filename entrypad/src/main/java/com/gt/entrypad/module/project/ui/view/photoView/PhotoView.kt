@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
 import com.bumptech.glide.request.RequestListener
@@ -16,6 +17,7 @@ import com.bumptech.glide.request.target.Target
 import com.gt.entrypad.R
 import com.gt.entrypad.base.view.BaseCustomView
 import com.gt.entrypad.databinding.LayoutPhotoViewBinding
+import com.zx.zxutils.util.ZXScreenUtil
 import kotlinx.android.synthetic.main.activity_project_list.*
 import java.io.File
 
@@ -37,6 +39,9 @@ class PhotoView  @JvmOverloads constructor(context: Context, attrs: AttributeSet
             .apply(
                 RequestOptions()
                     .centerCrop()
+                    .skipMemoryCache(true)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .override(data.width,data.height)
                     .placeholder(com.zx.zxutils.R.drawable.__picker_default_weixin)
                     .error(R.drawable.icon_img_error)
             )

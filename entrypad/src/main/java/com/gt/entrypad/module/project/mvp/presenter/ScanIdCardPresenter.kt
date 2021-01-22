@@ -11,18 +11,5 @@ import okhttp3.RequestBody
  * 功能：
  */
 class ScanIdCardPresenter : ScanIdCardContract.Presenter() {
-    override fun scanIdCard(body:RequestBody) {
-            mModel.scanIdCard(body)
-                .compose(RxHelper.bindToLifecycle(mView))
-                .subscribe(object : RxSubscriber<String>(mView) {
-                    override fun _onError(code: Int, message: String?) {
-                        mView.handleError(code, message?:"")
-                        mView.dismissLoading()
-                    }
 
-                    override fun _onNext(t: String?) {
-                      mView.scanIdCardResult(t)
-                    }
-                })
-    }
 }

@@ -12,6 +12,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.gt.entrypad.R
 import com.gt.entrypad.app.RouterPath
 import com.gt.entrypad.base.BaseFragment
+import com.gt.entrypad.base.BaseLazyFragment
 import com.gt.entrypad.module.project.func.PhotoAdapter
 import com.gt.entrypad.module.project.mvp.contract.TakePhotoContract
 import com.gt.entrypad.module.project.mvp.model.TakePhotoModel
@@ -48,6 +49,7 @@ class TakePhotoFragment :BaseFragment<TakePhotoPresenter,TakePhotoModel>(),TakeP
             return fragment
         }
     }
+
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)

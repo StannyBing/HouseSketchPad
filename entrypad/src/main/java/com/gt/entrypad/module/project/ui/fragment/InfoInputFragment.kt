@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.gt.entrypad.R
 import com.gt.entrypad.app.RouterPath
 import com.gt.entrypad.base.BaseFragment
+import com.gt.entrypad.base.BaseLazyFragment
 import com.gt.entrypad.module.project.bean.InputInfoBean
 import com.gt.entrypad.module.project.func.InfoInputAdapter
 import com.gt.entrypad.module.project.mvp.contract.InfoInputContract
@@ -60,6 +61,7 @@ class InfoInputFragment :BaseFragment<InfoInputPresenter,InfoInputModel>(),InfoI
         }
         initData()
     }
+
 
     override fun onViewListener() {
         mRxManager.on("notify", Action1 <InfoDialogViewViewModel>{
