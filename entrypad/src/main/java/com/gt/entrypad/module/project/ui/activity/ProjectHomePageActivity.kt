@@ -21,10 +21,7 @@ import com.gt.entrypad.module.project.func.TabFragmentPagerAdapter
 import com.gt.entrypad.module.project.mvp.contract.ProjectHomePageContract
 import com.gt.entrypad.module.project.mvp.model.ProjectHomePageModel
 import com.gt.entrypad.module.project.mvp.presenter.ProjectHomePagePresenter
-import com.gt.entrypad.module.project.ui.fragment.DrawSketchFragment
-import com.gt.entrypad.module.project.ui.fragment.InfoInputFragment
-import com.gt.entrypad.module.project.ui.fragment.ScanIdCardFragment
-import com.gt.entrypad.module.project.ui.fragment.TakePhotoFragment
+import com.gt.entrypad.module.project.ui.fragment.*
 import com.gt.entrypad.module.project.ui.view.titleView.TitleViewViewModel
 import kotlinx.android.synthetic.main.activity_project_home_page.*
 import kotlinx.android.synthetic.main.layout_tool_bar.*
@@ -96,6 +93,8 @@ class ProjectHomePageActivity :BaseActivity<ProjectHomePagePresenter,ProjectHome
                 takePhotoFragment = this
             })
             add(DrawSketchFragment.newInstance())
+            add(SoilGroundFrgment.newInstance())
+            add(ResultShowFragment.newInstance())
         }
     }
 
@@ -120,6 +119,7 @@ class ProjectHomePageActivity :BaseActivity<ProjectHomePagePresenter,ProjectHome
                 @SuppressLint("SetTextI18n")
                 override fun onPageSelected(position: Int) {
                     currentPageNum = position
+                    rightTv.visibility = View.VISIBLE
                     when(position){
                         0->{
                             toolBarTitleTv.text = getString(R.string.registrationPlatform)
@@ -132,6 +132,15 @@ class ProjectHomePageActivity :BaseActivity<ProjectHomePagePresenter,ProjectHome
                         }
                         3->{
                             toolBarTitleTv.text =getString(R.string.sketchDraw)+"$currentPageNum/${fragmentList.size-1}"
+                        }
+                        4->{
+                            toolBarTitleTv.text =getString(R.string.groundFigure)+"$currentPageNum/${fragmentList.size-1}"
+
+                        }
+                        5->{
+                            toolBarTitleTv.text =getString(R.string.resultShow)+"$currentPageNum/${fragmentList.size-1}"
+                            rightTv.visibility = View.INVISIBLE
+
                         }
                     }
                 }
