@@ -10,16 +10,16 @@ import com.gt.entrypad.module.project.mvp.presenter.SoilGroundresenter
 /**
  * create by 96212 on 2021/1/22.
  * Email 962123525@qq.com
- * desc 宗土落地
+ * desc 宗地落图
  */
-class SoilGroundFrgment :BaseFragment<SoilGroundresenter,SoilGroundModel>(),SoilGroundContract.View{
+class GroundFingureFragment :BaseFragment<SoilGroundresenter,SoilGroundModel>(),SoilGroundContract.View{
 
     companion object {
         /**
          * 启动器
          */
-        fun newInstance(): SoilGroundFrgment {
-            val fragment = SoilGroundFrgment()
+        fun newInstance(): GroundFingureFragment {
+            val fragment = GroundFingureFragment()
             val bundle = Bundle()
 
             fragment.arguments = bundle
